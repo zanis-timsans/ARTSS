@@ -68,11 +68,6 @@ app.layout = html.Div([
         dbc.Col([
             html.Div("Izvēlies kursu"),
             dcc.Dropdown(options=[
-                {'label': 'Fizika 8. klasei',
-                 'value': 'https://artss.mii.lv/webservice/rest/server.php?courseid=17&wstoken'
-                          '=a78e76c2570f41a3f180d0979914c7dc&wsfunction'
-                          '=local_notifyemailsignup_functiongetstudentactivitydata&moodlewsrestformat=json',
-                 'disabled': True},
                 {'label': 'Fizika 9. klasei',
                  'value': 'https://artss.mii.lv/webservice/rest/server.php?courseid=18&wstoken'
                           '=a78e76c2570f41a3f180d0979914c7dc&wsfunction'
@@ -136,8 +131,8 @@ app.layout = html.Div([
                  'value': 'https://bpome.mii.lv/webservice/rest/server.php?wstoken=abc77eef5247b3aa21488df6a394a3d4'
                           '&wsfunction=local_getstudentactivitydata_functiongetstudentactivitydata&date_from=0'}
             ],
-                value='https://bpome.mii.lv/webservice/rest/server.php?wstoken=abc77eef5247b3aa21488df6a394a3d4'
-                      '&wsfunction=local_getstudentactivitydata_functiongetstudentactivitydata&date_from=0',
+                # value='https://artss.mii.lv/webservice/rest/server.php?courseid=19&wstoken'
+                #           '=a78e76c2570f41a3f180d0979914c7dc&wsfunction',
                 searchable=True,
                 placeholder='Izvēlies vai ievadi kursa nosaukumu',
                 # style={'width': '80%'},
@@ -204,8 +199,13 @@ app.layout = html.Div([
     [Input(component_id='courses_dropdown', component_property='value')]
 )
 def update_telecides(value):
+    if value is None:
+        # PreventUpdate prevents ALL outputs updating
+        raise dash.exceptions.PreventUpdate
     api = value
-    df = pd.read_json(api, "split")
+    print(value)
+
+    df = pd.read_json(api, orient="split")
 
     df1 = pd.DataFrame(df['user'].values.tolist())
     df1.columns = 'user_' + df1.columns
@@ -343,6 +343,7 @@ def update_telecides(value):
     ])
 
     fig.update_layout(
+        # title='Telecīdas',
         template='plotly',
         scene=dict(
             xaxis_title="Piemērots",
@@ -375,10 +376,7 @@ def update_telecides(value):
             r=0, l=0,
             b=0, t=0),
     )
-    if value:
-        return fig, temas, number_of_students, pari, summa, value
-    else:
-        return [{}]
+    return fig, temas, number_of_students, pari, summa, value
 
 
 # -------------------------------------------------------------------------------------------------------------------
