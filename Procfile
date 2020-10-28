@@ -1,1 +1,1 @@
-web: gunicorn telecides.py:server
+web: gunicorn app:server
