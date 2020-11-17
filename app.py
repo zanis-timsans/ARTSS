@@ -27,6 +27,37 @@ camera = dict(
     eye=dict(x=2, y=2, z=0.8)
 )
 
+
+# Function for formatting each annotation
+def annotation(x, y, z, text, anchor, color):
+    return dict(
+        showarrow=False,
+        x=x,
+        y=y,
+        z=z,
+        text=text,
+        xanchor=anchor,
+        xshift=-2,
+        yshift=10,
+        opacity=1,
+        font=dict(
+            color=color,
+            size=14
+        ),
+    )
+
+
+# Function for formatting each axis
+def axis(backgroundcolor):
+    return dict(
+        nticks=6, range=[0,1],
+        backgroundcolor=backgroundcolor,
+        gridcolor="white",
+        showbackground=True,
+        zerolinecolor="white",
+        showspikes=False)
+
+
 # Create dataframe for visualising 'Complete learning acquisition landscape'
 df_tele = pd.DataFrame(data=[['too complicated content', 0.222, 0.111, 0.666],
                              ['too easy content', 0, 1, 0, ],
@@ -52,27 +83,14 @@ fig.update_layout(
         xaxis_title="Piemērots",
         yaxis_title="Viegls",
         zaxis_title="Nepiemērots",
-        xaxis=dict(
-            nticks=6, range=[0, 1],
-            backgroundcolor="rgb(200, 200, 230)",
-            gridcolor="white",
-            showbackground=True,
-            zerolinecolor="white",
-            showspikes=False),
-        yaxis=dict(
-            nticks=6, range=[0, 1],
-            backgroundcolor="rgb(230, 200,230)",
-            gridcolor="white",
-            showbackground=True,
-            zerolinecolor="white",
-            showspikes=False),
-        zaxis=dict(
-            nticks=6, range=[0, 1],
-            backgroundcolor="rgb(230, 230,200)",
-            gridcolor="white",
-            showbackground=True,
-            zerolinecolor="white",
-            showspikes=False),
+        xaxis=axis("rgb(200, 200, 230)"),
+        yaxis=axis("rgb(230, 200,230)"),
+        zaxis=axis("rgb(230, 230,200)"),
+        annotations=[
+            annotation(0.222, 0.111, 0.666, '<b>Nepiemērots</b>', 'center', 'indianred'),
+            annotation(0.667, 0.333, 0, '<b>Piemērots</b>', 'right', 'mediumseagreen'),
+            annotation(0, 1, 0, '<b>Viegls</b>', 'left', 'royalblue')
+        ],
     ),
     height=600,
     margin=dict(
@@ -250,27 +268,14 @@ def grouping_fig(coll, x, y):
             xaxis_title="Piemērots",
             yaxis_title="Viegls",
             zaxis_title="Nepiemērots",
-            xaxis=dict(
-                nticks=6, range=[0, 1],
-                backgroundcolor="rgb(200, 200, 230)",
-                gridcolor="white",
-                showbackground=True,
-                zerolinecolor="white",
-                showspikes=False),
-            yaxis=dict(
-                nticks=6, range=[0, 1],
-                backgroundcolor="rgb(230, 200,230)",
-                gridcolor="white",
-                showbackground=True,
-                zerolinecolor="white",
-                showspikes=False),
-            zaxis=dict(
-                nticks=6, range=[0, 1],
-                backgroundcolor="rgb(230, 230,200)",
-                gridcolor="white",
-                showbackground=True,
-                zerolinecolor="white",
-                showspikes=False),
+            xaxis=axis("rgb(200, 200, 230)"),
+            yaxis=axis("rgb(230, 200,230)"),
+            zaxis=axis("rgb(230, 230,200)"),
+            annotations=[
+                annotation(0.222, 0.111, 0.666, '<b>Nepiemērots</b>', 'center', 'indianred'),
+                annotation(0.667, 0.333, 0, '<b>Piemērots</b>', 'right', 'mediumseagreen'),
+                annotation(0, 1, 0, '<b>Viegls</b>', 'left', 'royalblue')
+            ],
         ),
         height=700,
         margin=dict(
