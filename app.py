@@ -417,14 +417,14 @@ app.layout = html.Div([
                 ),
                 dbc.Card(
                     dbc.CardBody([
-                        html.Div('Studenti', className="card-title text-center"),
-                        html.H1(id='number_of_students', className='text-center')
+                        html.Div('Apakštēmas', className="card-title text-center"),
+                        html.H1(id='pari', className='text-center')
                     ]), className=""
                 ),
                 dbc.Card(
                     dbc.CardBody([
-                        html.Div('Apakštēmas', className="card-title text-center"),
-                        html.H1(id='pari', className='text-center')
+                        html.Div('Studenti', className="card-title text-center"),
+                        html.H1(id='number_of_students', className='text-center')
                     ]), className=""
                 ),
                 dbc.Card(
