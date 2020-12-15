@@ -29,4 +29,5 @@ Please make sure to update tests as appropriate.
 Copyright (C) RTU Distance Education Study Center - All Rights Reserved
 Unauthorized copying of this file, via any medium is strictly prohibited
 Proprietary and confidential
+Part of the [ARTSS project](https://artss.rtu.lv/)
 Written by Zanis Timsans <zanis.timsans@gmail.com>, December 2020
