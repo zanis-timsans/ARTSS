@@ -17,7 +17,7 @@ Update dropdown with your API link.
 ```python
 dcc.Dropdown(options=[
                 {'label': 'Your course',
-                 'value': 'API link'},
+                 'value': 'API link'}])
 ```
 
 ## Contributing
