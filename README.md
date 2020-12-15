@@ -1,5 +1,5 @@
-# ARTSS
-ARTSS data visualisation web application
+# ARTSS EDU
+ARTSS EDU data visualisation web application
 
 ## Installation
 
@@ -26,8 +26,8 @@ Pull requests are welcome when authorized. For major changes, please open an iss
 Please make sure to update tests as appropriate.
 
 ## License
-Copyright (C) RTU Distance Education Study Center - All Rights Reserved
-Unauthorized copying of this file, via any medium is strictly prohibited
-Proprietary and confidential
-Part of the [ARTSS project](https://artss.rtu.lv/)
+Copyright (C) RTU Distance Education Study Center - All Rights Reserved\
+Unauthorized copying of this file, via any medium is strictly prohibited\
+Proprietary and confidential\
+Part of the [ARTSS project](https://artss.rtu.lv/)\
 Written by Zanis Timsans <zanis.timsans@gmail.com>, December 2020
